@@ -30,15 +30,15 @@ def calculate_distance(location_1, location_2):
     return distance_km
     
 # Use BING API to collect geo info about the location, stored in a dictionary.    
-def _get_geo_info(prompt):
-    geo_search_bing = geocoder.bing(location={prompt}, key=BING_API_KEY)
-    geo_results = geo_search_bing.json
-    return geo_results   
+def _get_geo_info(location):
+    geo_search_bing = geocoder.bing(location={location}, key=BING_API_KEY)
+    geo_info = geo_search_bing.json
+    return geo_info   
 
 # Get lat and lng out of this dictionary.
-def _get_coordinates(geo_results):
-    latitude = geo_results["lat"]
-    longitude = geo_results["lng"]
+def _get_coordinates(geo_info):
+    latitude = geo_info["lat"]
+    longitude = geo_info["lng"]
     return (latitude, longitude)
     
 
