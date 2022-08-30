@@ -13,11 +13,12 @@ BING_API_KEY = "ApZEeQXVfhqHAtbsb4lxyYcqQI-asspthJToNAhK-tbfsk6wIZWZ8eYwcFuQWl2P
 def main():
     prompt_1 = input("Enter first location: ")
     prompt_2 = input("Enter second location: ")
-    distance = calculate_distance(prompt_1, prompt_2)
-    print(f"Distance between {prompt_1} and {prompt_2}: {distance:.2f} km") 
+    prompt_3 = input("Choose miles or kilometers: ")
+    distance = calculate_distance(prompt_1, prompt_2, prompt_3)
+    print(f"Distance between {prompt_1} and {prompt_2}: {distance:.2f} {prompt_3}") 
 
-# Calculate the distance in km's between both locations.
-def calculate_distance(location_1, location_2):
+# Calculates the distance between both locations, default in kms.
+def calculate_distance(location_1, location_2, unit_of_distance="kilometers"):
     location_1_geo_info = _get_geo_info(location_1)
     location_2_geo_info = _get_geo_info(location_2)
     
@@ -25,9 +26,12 @@ def calculate_distance(location_1, location_2):
     coordinates_location_1 = _get_coordinates(location_1_geo_info)
     coordinates_location_2 = _get_coordinates(location_2_geo_info)
     
-    # Calculate the distance in km.
-    distance_km = distance.distance(coordinates_location_1, coordinates_location_2).km
-    return distance_km
+    # Calculate the distance in miles or kms.
+    if unit_of_distance == "kilometers":
+        calculated_distance = distance.distance(coordinates_location_1, coordinates_location_2).km
+    if unit_of_distance == "miles":
+        calculated_distance = distance.distance(coordinates_location_1, coordinates_location_2).miles
+    return calculated_distance
     
 # Use BING API to collect geo info about the location, stored in a dictionary.    
 def _get_geo_info(location):
