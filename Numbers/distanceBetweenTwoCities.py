@@ -17,8 +17,8 @@ def main():
     distance = calculate_distance(prompt_1, prompt_2, prompt_3)
     print(f"Distance between {prompt_1} and {prompt_2}: {distance:.2f} {prompt_3}") 
 
-# Calculates the distance between both locations, default in kms.
-def calculate_distance(location_1, location_2, unit_of_distance="kilometers"):
+# Calculates the distance between both locations.
+def calculate_distance(location_1, location_2, unit_of_distance):
     location_1_geo_info = _get_geo_info(location_1)
     location_2_geo_info = _get_geo_info(location_2)
     
@@ -26,7 +26,7 @@ def calculate_distance(location_1, location_2, unit_of_distance="kilometers"):
     coordinates_location_1 = _get_coordinates(location_1_geo_info)
     coordinates_location_2 = _get_coordinates(location_2_geo_info)
     
-    # Calculate the distance in miles or kms.
+    # Calculate in miles or kilometers.
     if unit_of_distance == "kilometers":
         calculated_distance = distance.distance(coordinates_location_1, coordinates_location_2).km
     if unit_of_distance == "miles":
