@@ -1,3 +1,5 @@
+# Program representing hangman including visuals.
+
 import hangman_visual, random, string
 
 ALPHABET_UPPER = set(string.ascii_uppercase)
