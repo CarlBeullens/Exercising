@@ -7,7 +7,6 @@ score_X = 0
 score_O = 0
 
 def reset_game():
-    
     START_BOARD = [
                 ["| ", "0" , " | " , "1" , " | " , "2" , " | "],
                 ["| ", "3" , " | " , "4" , " | " , "5" , " | "],
@@ -23,7 +22,6 @@ def reset_game():
     
 
 def print_board():
-    
     for row in board:
         for element in row:
             print(element, end="")
@@ -33,7 +31,6 @@ def print_board():
 
 def human_move():
     # Human player gets to play with "X".
-    
     if not moves:
         sys.exit("It's a tie!")
 
@@ -56,7 +53,6 @@ def human_move():
     
 def computer_move():
     # Computer gets to play with "O".
-
     if not moves:
         sys.exit("It's a tie!")
     
@@ -72,8 +68,7 @@ def computer_move():
     print_board()
 
  
-def check_for_winner():
-            
+def check_for_winner():  
     horizontal_win = _horizontal_win()
     vertical_win = _vertical_win()
     diagonal1_win = _diagonal_win_1()
@@ -90,7 +85,6 @@ def check_for_winner():
 
 
 def _horizontal_win(): 
-    
     for row in range(len(board)):
         counter_X = 0
         counter_O = 0
@@ -163,21 +157,18 @@ def _diagonal_win_2():
 
 
 def _update_score_X():
-    
     global score_X
     score_X += 1
     print(f"You win! Score: {score_X}-{score_O}")
     
     
 def _update_score_O():   
-    
     global score_O
     score_O += 1 
     print(f"Computer wins! Score: {score_X}-{score_O}")
 
             
 def tictactoe(score_X=0, score_O=0):
-    
     print_board()
     
     while True:
@@ -204,9 +195,7 @@ def tictactoe(score_X=0, score_O=0):
     
     
 def game_loop():
-     
     while True:
-        
         reset_game()
         tictactoe()
         if input("Press any key to keep playing, press 'q' to quit. ") == "q":
