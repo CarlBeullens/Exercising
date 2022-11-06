@@ -1,3 +1,4 @@
+# Program to represent a game of tictactoe vs the computer (no AI).
 
 import random
 
@@ -67,7 +68,7 @@ def computer_move():
     
     print_board()
 
- 
+    
 def check_for_winner():  
     horizontal_win = _horizontal_win()
     vertical_win = _vertical_win()
@@ -77,7 +78,6 @@ def check_for_winner():
     possible_wins = [horizontal_win, vertical_win, diagonal1_win, diagonal2_win]
     
     for winner in possible_wins:
-        
         if winner == "X":
             return "X"
         elif winner == "O":
@@ -89,7 +89,6 @@ def _horizontal_win():
         counter_X = 0
         counter_O = 0
         for col in range(1, 7, 2):
-                
             if board[row][col] == "X":
                 counter_X += 1  
             elif board[row][col] == "O":
@@ -106,7 +105,6 @@ def _vertical_win():
         counter_X = 0
         counter_O = 0
         for row in range(len(board)):
-            
             if board[row][col] == "X":
                 counter_X += 1
             elif board[row][col] == "O":
@@ -123,12 +121,10 @@ def _diagonal_win_1():
     counter_X = 0
     counter_O = 0
     for row in range(len(board)):
-        
         if board[row][i] == "X":
             counter_X += 1  
         elif board[row][i] == "X":
             counter_X += 1  
-        
         i += 2
     
     if counter_X == 3:
@@ -142,12 +138,10 @@ def _diagonal_win_2():
     counter_X = 0
     counter_O = 0
     for row in range(len(board)):
-        
         if board[row][i] == "X":
             counter_X += 1  
         elif board[row][i] == "X":
             counter_X += 1  
-        
         i -= 2
     
     if counter_X == 3:
@@ -172,13 +166,11 @@ def tictactoe(score_X=0, score_O=0):
     print_board()
     
     while True:
-        
         human_move()
         
         if check_for_winner() == "X":
             _update_score_X()
             break
-        
         elif check_for_winner() == "O":
             _update_score_O()
             break
@@ -188,7 +180,6 @@ def tictactoe(score_X=0, score_O=0):
         if check_for_winner() == "X":
             _update_score_X
             break
-        
         elif check_for_winner() == "O":
             _update_score_O()
             break
@@ -199,7 +190,7 @@ def game_loop():
         reset_game()
         tictactoe()
         if input("Press any key to keep playing, press 'q' to quit. ") == "q":
-            break
+            break 
     
     print("\nGoodbye!") 
     
